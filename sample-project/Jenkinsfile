@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-    IMAGE = "YOUR_DOCKERHUB_USERNAME/static-site:${env.BUILD_NUMBER}"
+    IMAGE = "mahek124/static-site:${env.BUILD_NUMBER}"
   }
   stages {
     stage('Checkout') {
