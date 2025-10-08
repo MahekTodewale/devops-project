@@ -26,7 +26,7 @@ pipeline {
       steps {
         withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG_FILE')]) {
           sh 'mkdir -p $HOME/.kube && cp $KUBECONFIG_FILE $HOME/.kube/config'
-          # replace placeholder image tag in deployment.yaml and apply
+          // replace placeholder image tag in deployment.yaml and apply
           sh "sed -i 's#YOUR_DOCKERHUB_USERNAME/static-site:1.0#${IMAGE}#g' deployment.yaml || true"
           sh "kubectl apply -f deployment.yaml"
           sh "kubectl apply -f service.yaml"
